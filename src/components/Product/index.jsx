@@ -3,11 +3,8 @@ import { BsFillCartCheckFill } from 'react-icons/bs';
 import { ImPriceTags } from 'react-icons/im';
 import { AuthProvider } from '../../context/AuthContext';
 
-function Product({ data }) {
-
+function Product({ data, hero, handleAddToCart }) {
     const { user } = useContext(AuthProvider)
-    console.log(user, 'user');
-
 
     return (
         <div className="card card-compact w-96 bg-base-100 shadow-xl">
@@ -19,7 +16,7 @@ function Product({ data }) {
                     <p><ImPriceTags className=' inline text-3xl' /> <span className='font-bold'>price:{data.price} $</span></p>
 
                     {/* modal button  */}
-                    {user ? <label className="btn btn-primary"><BsFillCartCheckFill className=' inline text-3xl ' /><span className=' font-bold text-white' >addToCart</span></label> : <label htmlFor="login_modal" className="btn btn-primary"><BsFillCartCheckFill className=' inline text-3xl ' /><span className=' font-bold text-white' >addToCart</span></label>}
+                    {user ? <label onClick={() => handleAddToCart(data)} className="btn btn-primary"><BsFillCartCheckFill className=' inline text-3xl ' /><span className=' font-bold text-white' >addToCart</span></label> : <label htmlFor="login_modal" className="btn btn-primary"><BsFillCartCheckFill className=' inline text-3xl ' /><span className=' font-bold text-white'  >addToCart</span></label>}
                 </div>
             </div>
         </div>
